@@ -17,7 +17,22 @@ import { RoleModule } from './api/role/role.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 
 @Module({
-  imports: [ProductModule, CustomerModule, BrandModule, PaymentreferenceModule, DeliveryTypeModule, PaymentReferenceModule, AdvertisingSourceModule, PaymentTypeModule, SaleOrderModule, SaleOrderDetailModule, PurchaseOrderDetailModule, PurchaseOrderModule, RoleModule, AuthenticationModule],
+  imports: [
+    ProductModule,
+    CustomerModule,
+    BrandModule,
+    PaymentreferenceModule,
+    DeliveryTypeModule,
+    PaymentReferenceModule,
+    AdvertisingSourceModule,
+    PaymentTypeModule,
+    SaleOrderModule,
+    SaleOrderDetailModule,
+    PurchaseOrderDetailModule,
+    PurchaseOrderModule,
+    RoleModule,
+    AuthenticationModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

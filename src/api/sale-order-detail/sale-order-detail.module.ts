@@ -4,6 +4,6 @@ import { SaleOrderDetailController } from './sale-order-detail.controller';
 
 @Module({
   controllers: [SaleOrderDetailController],
-  providers: [SaleOrderDetailService]
+  providers: [SaleOrderDetailService],
 })
 export class SaleOrderDetailModule {}

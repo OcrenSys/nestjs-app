@@ -16,7 +16,10 @@ export class PurchaseOrderDetailService {
     return `This action returns a #${id} purchaseOrderDetail`;
   }
 
-  update(id: number, updatePurchaseOrderDetailDto: UpdatePurchaseOrderDetailDto) {
+  update(
+    id: number,
+    updatePurchaseOrderDetailDto: UpdatePurchaseOrderDetailDto,
+  ) {
     return `This action updates a #${id} purchaseOrderDetail`;
   }
 

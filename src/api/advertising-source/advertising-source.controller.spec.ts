@@ -11,7 +11,9 @@ describe('AdvertisingSourceController', () => {
       providers: [AdvertisingSourceService],
     }).compile();
 
-    controller = module.get<AdvertisingSourceController>(AdvertisingSourceController);
+    controller = module.get<AdvertisingSourceController>(
+      AdvertisingSourceController,
+    );
   });
 
   it('should be defined', () => {
