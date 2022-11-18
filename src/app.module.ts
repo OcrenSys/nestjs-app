@@ -4,9 +4,7 @@ import { AppService } from './app.service';
 import { ProductModule } from './api/product/product.module';
 import { CustomerModule } from './api/customer/customer.module';
 import { BrandModule } from './api/brand/brand.module';
-import { PaymentreferenceModule } from './api/paymentreference/paymentreference.module';
 import { DeliveryTypeModule } from './api/delivery-type/delivery-type.module';
-import { PaymentReferenceModule } from './api/payment-reference/payment-reference.module';
 import { AdvertisingSourceModule } from './api/advertising-source/advertising-source.module';
 import { PaymentTypeModule } from './api/payment-type/payment-type.module';
 import { SaleOrderModule } from './api/sale-order/sale-order.module';
@@ -21,9 +19,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
     ProductModule,
     CustomerModule,
     BrandModule,
-    PaymentreferenceModule,
     DeliveryTypeModule,
-    PaymentReferenceModule,
     AdvertisingSourceModule,
     PaymentTypeModule,
     SaleOrderModule,
