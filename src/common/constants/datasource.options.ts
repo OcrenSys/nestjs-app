@@ -6,7 +6,7 @@ export default () => ({
 | Here is the configuration values to database connections
 |--------------------------------------------------------------------------*/
   type: 'mysql',
-  host: process.env.DATABASE_HOST || 'localhost',
+  host: process.env.DATABASE_HOST || 'mysql',
   port: parseInt(process.env.DATABASE_PORT, 10) || 3306,
   username: process.env.DATABASE_USERNAME || 'root',
   database: process.env.DATABASE_NAME || 'inventory',

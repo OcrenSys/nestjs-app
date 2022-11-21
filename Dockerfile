@@ -1,3 +1,4 @@
+
 ################################################
 ################   Development   ###############
 ################################################
@@ -16,8 +17,17 @@ RUN yarn
 # Bundle app source / copy all other files
 COPY . .
 
+# Expose development and debug ports
+EXPOSE 3000 9229
+
 # Build the app to the /dist folder
-RUN yarn build
+
+# RUN yarn build
+
+# TESTING HOT RELOAD
+# CMD [ "node", "dist/main" ]
+CMD [ "yarn", "start:dev" ]
+
 
 ################################################
 ################   PRODUCTION   ################
@@ -35,9 +45,6 @@ WORKDIR /usr/src/app
 # Copy all from development stage
 COPY --from=development /usr/src/app .
 
-
-# Expose development and debug ports
-EXPOSE 3000 9229
 
 # Run production mode app
 CMD [ "node", "dist/main" ]

@@ -1,6 +1,7 @@
 import { Base } from '../../../common/models/base.entity';
 import { Column, Entity, ManyToOne } from 'typeorm';
 import { Brand } from '../../../api/brand/entities/brand.entity';
+
 @Entity()
 export class Product extends Base {
   @Column({ nullable: false, length: 100 })
@@ -12,16 +13,16 @@ export class Product extends Base {
   @Column({
     length: 2000,
     nullable: true,
-    transformer: {
-      from(value: string | null): URL | string | null {
-        return value !== null ? new URL(value) : value;
-      },
-      to(value: URL | string | null): string | null {
-        return value?.toString() || null;
-      },
-    },
+    // transformer: {
+    //   from(value: string | null): URL | string | null {
+    //     return value !== null ? new URL(value) : value;
+    //   },
+    //   to(value: URL | string | null): string | null {
+    //     return value?.toString() || null;
+    //   },
+    // },
   })
-  link: URL | string | null;
+  link: string;
 
   @Column() // Setting format, add 'lb' sufix
   waight: number;

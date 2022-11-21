@@ -14,12 +14,12 @@ services:
       - mysql
     volumes:
       - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - ./usr/src/app/node_modules
     command: >
       sh -c "yarn && yarn start:dev"
     ports:
       - '${API_PORT_DEV}:${API_PORT_DEV}'
-      - 9229:9229
+      - '${API_PORT_DEBUG}:${API_PORT_DEBUG}'
     environment:
       WAIT_HOSTS: mysql:${DATABASE_PORT}
 

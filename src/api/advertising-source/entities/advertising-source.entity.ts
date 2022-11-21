@@ -1,5 +1,6 @@
 import { Column, Entity } from 'typeorm';
 import { Base } from '../../../common/models/base.entity';
+
 @Entity()
 export class AdvertisingSource extends Base {
   @Column({ nullable: false })
@@ -7,8 +8,4 @@ export class AdvertisingSource extends Base {
 
   @Column({ default: true })
   isActive: boolean;
-
-  other: string;
-
-  // this is a test commend to check auto reload changes
 }

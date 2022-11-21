@@ -1,4 +1,3 @@
-import { IsNumber } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -9,19 +8,17 @@ import {
 
 export class Base {
   @PrimaryGeneratedColumn()
-  @Column()
-  @IsNumber()
-  id: number;
+  id?: number;
 
   @Column()
   @CreateDateColumn()
-  createAt: Date;
+  createAt?: Date;
 
   @Column()
   @UpdateDateColumn()
-  updateAt: Date;
+  updateAt?: Date;
 
   @Column()
   @DeleteDateColumn()
-  removeAt: Date;
+  removeAt?: Date;
 }

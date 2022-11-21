@@ -2,11 +2,11 @@ const path = require('path'); // eslint-disable-line
 
 module.exports = {
   type: 'mysql',
-  database: process.env.DATABASE_NAME,
-  host: process.env.DATABASE_HOST,
-  port: parseInt(process.env.DATABASE_PORT, 10),
-  username: process.env.DATABASE_USERNAME,
-  password: process.env.DATABASE_PASSWORD,
+  host: process.env.DATABASE_HOST || 'mysql',
+  port: parseInt(process.env.DATABASE_PORT, 10) || 3306,
+  username: process.env.DATABASE_USERNAME || 'root',
+  database: process.env.DATABASE_NAME || 'inventory',
+  password: process.env.DATABASE_PASSWORD || '12345678',
   entities: [path.resolve(__dirname, 'src/**/*.entity.{js,ts}')],
   migrations: [path.resolve(__dirname, 'src/database/migrations/*{.ts,.js}')],
   seeds: [path.resolve(__dirname, 'src/database/seeders/**/*{.ts,.js}')],
