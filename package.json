@@ -1,5 +1,6 @@
 {
   "name": "inventory-api",
+  "title":"Inventory API",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -9,38 +10,46 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+
     "start": "nest start",
-    "start:dev": "nest start --watch",
-    "start:debug": "nest start --debug 0.0.0.0:9229 --watch",
+    "start:dev": "nest start --tsc --watch",
+    "start:debug": "nest start --tsc --debug 0.0.0.0:9229 --watch",
     "start:prod": "node dist/main",
+
     "lint": "eslint \"src/**/*.ts\" --fix",
+
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+
+    "typeorm:cli": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli -f src/config/typeorm-migrations.config.ts src/config/typeorm.config.ts"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
-    "@nestjs/core": "^9.0.0",
     "@nestjs/config": "^2.2.0",
+    "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
-    "@nestjs/typeorm": "^7.1.5",
-    "reflect-metadata": "^0.1.13",
-    "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0",
+    "@nestjs/typeorm": "^9.0.1",
     "@types/faker": "^6.6.9",
+
     "class-validator": "^0.11.1",
+
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-unused-imports": "^2.0.0",
+
     "mysql2": "^2.3.3",
     "path": "^0.12.7",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^7.2.0",
+
     "typeorm": "^0.3.10",
     "typeorm-extension": "^2.2.13",
-    "typeorm-naming-strategies": "^4.1.0",
     "typeorm-seeding": "^1.6.1"
   },
   "devDependencies": {
@@ -53,16 +62,19 @@
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
+
     "eslint": "^8.0.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-unused-imports": "^2.0.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+
     "jest": "28.1.2",
     "prettier": "^2.7.1",
     "source-map-support": "^0.5.20",
     "supertest": "^6.1.3",
+
     "ts-jest": "28.0.5",
     "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",

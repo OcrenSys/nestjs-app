@@ -1,7 +1,7 @@
 import { Base } from '../../../common/models/base.entity';
-import { Column, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 import { Brand } from '../../../api/brand/entities/brand.entity';
-
+@Entity()
 export class Product extends Base {
   @Column({ nullable: false, length: 100 })
   description: string;

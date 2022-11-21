@@ -1,6 +1,6 @@
 import { Base } from '../../../common/models/base.entity';
-import { Column } from 'typeorm';
-
+import { Column, Entity } from 'typeorm';
+@Entity()
 export class PaymentType extends Base {
   @Column({ nullable: false })
   name: string;

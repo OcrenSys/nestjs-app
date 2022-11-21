@@ -1,6 +1,6 @@
-import { Column } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 import { Base } from '../../../common/models/base.entity';
-
+@Entity()
 export class AdvertisingSource extends Base {
   @Column({ nullable: false })
   name: string;
