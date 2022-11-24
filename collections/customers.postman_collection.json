@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "82dc2d71-e132-4339-8ccd-6eef6a2d03b8",
+		"name": "customers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7289838"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jhon\",\r\n    \"lastName\": \"Lenon\",\r\n    \"phone\": \"(+505) 87654321\",\r\n    \"email\": \"develop@smbssolutions.com\",\r\n    \"address\": \"Managua Nicaragua, Bello horizonte, contiguo al edificio multicentro las americas, edificio color blanco de dos pisos.\",\r\n    \"isActive\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/customer/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/customer/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findOne",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/customer/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jhon (updated)\",\r\n    \"lastName\": \"Lenon (updated)\",\r\n    \"phone\": \"(+505) 12345678\",\r\n    \"email\": \"develop@smbssolutions.com.ni\",\r\n    \"address\": \"Managua Nicaragua, Bello horizonte, contiguo al edificio multicentro las americas, edificio color blanco de dos pisos (updated).\",\r\n    \"isActive\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/customer/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/customer/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"customer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

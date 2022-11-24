@@ -3,7 +3,7 @@ import { Base } from '../../../common/models/base.entity';
 
 @Entity()
 export class Customer extends Base {
-  @Column()
+  @Column({ length: 40 })
   name: string;
 
   @Column({ length: 40 })
