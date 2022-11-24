@@ -4,8 +4,8 @@ export const MODEL = Object.freeze({
   AdvertisingSource: 'Advertising Source',
   Brand: 'Brand',
   Customer: 'Customer',
-  DeliveryType: 'DeliveryType',
-  PaymentType: 'PaymentType',
+  DeliveryType: 'Delivery Type',
+  PaymentType: 'Payment Type',
   Product: 'Product',
   Role: 'Role',
 });
