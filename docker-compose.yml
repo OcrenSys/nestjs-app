@@ -2,7 +2,7 @@ version: "3"
 
 services:
   api:
-    container_name: '${CONTAINER}-api'
+    container_name: '${CONTAINER_NAME}-api'
     env_file:
       - .env
     build:
@@ -16,15 +16,25 @@ services:
       - .:/usr/src/app
       - ./usr/src/app/node_modules
     command: >
-      sh -c "yarn && yarn start:dev"
+      sh -c "yarn && yarn run seed:run && yarn start:dev"
     ports:
       - '${API_PORT_DEV}:${API_PORT_DEV}'
       - '${API_PORT_DEBUG}:${API_PORT_DEBUG}'
     environment:
       WAIT_HOSTS: mysql:${DATABASE_PORT}
+    networks:
+      - inventory
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 500M
+        reservations:
+          cpus: '0.25'
+          memory: 200M
 
   mysql:
-    container_name: '${CONTAINER}-mysql'
+    container_name: '${CONTAINER_NAME}-mysql'
     image: mysql:8.0.29
     restart: always
     environment:
@@ -39,9 +49,19 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     ports:
       - '${DATABASE_PORT}:${DATABASE_PORT}'
+    networks:
+      - inventory
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 500M
+        reservations:
+          cpus: '0.25'
+          memory: 200M
 
   phpmyadmin:
-    container_name: '${CONTAINER}-phpmyadmin'
+    container_name: '${CONTAINER_NAME}-phpmyadmin'
     image: phpmyadmin/phpmyadmin
     env_file:
       - .env
@@ -54,6 +74,19 @@ services:
       - '${PHP_MYADMIN_PORT}:${PHP_MYADMIN_PORT}'
     depends_on:
       - mysql
+    networks:
+      - inventory
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 500M
+        reservations:
+          cpus: '0.25'
+          memory: 200M
 
 volumes:
   mysqldata: {}
+
+networks:
+  inventory:

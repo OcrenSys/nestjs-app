@@ -22,11 +22,7 @@ EXPOSE 3000 9229
 
 # Build the app to the /dist folder
 
-# RUN yarn build
-
-# TESTING HOT RELOAD
-# CMD [ "node", "dist/main" ]
-CMD [ "yarn", "start:dev" ]
+RUN yarn build
 
 
 ################################################
