@@ -107,7 +107,7 @@ export class AdvertisingSourceService {
         });
 
       if (!advertisingSource)
-        throw new NotFoundException(
+        return new NotFoundException(
           {
             data: null,
             status: HttpStatus.NOT_FOUND,
