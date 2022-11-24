@@ -5,52 +5,46 @@ import {
 } from '@nestjs/typeorm';
 import { DataSourceOptions } from 'typeorm';
 import { SeederOptions } from 'typeorm-extension';
-// import Options from '../common/constants/datasource.options';
 
-export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
+export default () => ({ ...typeOrmConfigAsync });
+
+export const typeOrmConfigAsync: TypeOrmModuleAsyncOptions = {
   imports: [ConfigModule],
   inject: [ConfigService],
   useFactory: async (): Promise<TypeOrmModuleOptions> => {
     const dataSourceAndSeederOptions: DataSourceOptions & SeederOptions = {
-      // ...Options,
       type: 'mysql',
-      host: process.env.DATABASE_HOST || 'mysql',
-      port: parseInt(process.env.DATABASE_PORT, 10) || 3306,
-      username: process.env.DATABASE_USERNAME || 'root',
-      database: process.env.DATABASE_NAME || 'inventory',
-      password: process.env.DATABASE_PASSWORD || '12345678',
+      host: process.env.DATABASE_HOST,
+      port: parseInt(process.env.DATABASE_PORT, 10),
+      username: process.env.DATABASE_USERNAME,
+      database: process.env.DATABASE_NAME,
+      password: process.env.DATABASE_PASSWORD,
       entities: [`${__dirname}/../**/*.entity.{js,ts}`],
       migrations: [`${__dirname}/../database/migrations/*{.ts,.js}`],
       extra: {
         charset: 'utf8mb4_unicode_ci',
       },
-      logging: true,
       synchronize: true,
       dropSchema: false,
-      migrationsRun: false,
+      migrationsRun: true,
+      logging: true,
     };
     return dataSourceAndSeederOptions;
   },
 };
 
-const typeOrmConfig: TypeOrmModuleOptions = {
-  // ...Options,
+export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'mysql',
-  host: process.env.DATABASE_HOST || 'mysql',
-  port: parseInt(process.env.DATABASE_PORT, 10) || 3306,
-  username: process.env.DATABASE_USERNAME || 'root',
-  database: process.env.DATABASE_NAME || 'inventory',
-  password: process.env.DATABASE_PASSWORD || '12345678',
+  host: process.env.DATABASE_HOST,
+  port: parseInt(process.env.DATABASE_PORT, 10),
+  username: process.env.DATABASE_USERNAME,
+  database: process.env.DATABASE_NAME,
+  password: process.env.DATABASE_PASSWORD,
   entities: [`${__dirname}/../**/*.entity.{js,ts}`],
   migrations: [`${__dirname}/../database/migrations/*{.ts,.js}`],
   extra: {
     charset: 'utf8mb4_unicode_ci',
   },
+  synchronize: false,
   logging: true,
-  synchronize: true,
-  dropSchema: false,
-  migrationsRun: false,
-  autoLoadEntities: true,
 };
-
-export default () => typeOrmConfig;

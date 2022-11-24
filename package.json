@@ -1,6 +1,6 @@
 {
   "name": "inventory-api",
-  "title":"Inventory API",
+  "title": "Inventory",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -26,11 +26,10 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
 
     "typeorm:cli": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli -f src/config/typeorm.config-migrations.ts src/config/typeorm.config.ts",
-
-    "migration:generate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli migration:generate -d src/config/typeorm.config-migrations.ts -o",
-    "migration:create": "yarn run typeorm:cli -- migration:create -d src/database/migration -n",
-    "migration:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli migration:run -d src/config/typeorm.config-migrations.ts",
-    "migration:revert": "yarn run typeorm:cli -- migration:revert",
+    "migrate:create": "ts-node ./node_modules/typeorm/cli.js migrations:create",
+    "migrate:generate": "ts-node ./node_modules/typeorm/cli.js migrations:generate",
+    "migrate:run": "ts-node ./node_modules/typeorm/cli.js migration:run",
+    "migration:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert",
 
     "db:create": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js db:create",
     "db:drop": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js db:drop",
@@ -56,7 +55,6 @@
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-unused-imports": "^2.0.0",
 
-    "firebase-admin": "^11.0.1",
     "mysql2": "^2.3.3",
     "path": "^0.12.7",
     "reflect-metadata": "^0.1.13",
