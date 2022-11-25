@@ -25,7 +25,7 @@ export class Product extends Base {
   link: string;
 
   @Column() // Setting format, add 'lb' sufix
-  waight: number;
+  weight: number;
 
   @Column() // Setting format 'LARGO x ALTO x ANCHO'
   dimensions: string;
