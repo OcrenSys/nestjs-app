@@ -1,4 +1,4 @@
-import { Product } from '../../api/product/entities/product.entity';
+import { Product } from '../../../api/product/entities/product.entity';
 import { Column, Entity } from 'typeorm';
 import { PurchaseOrder } from '../../../api/purchase-order/entities/purchase-order.entity';
 import { Base } from '../../../common/models/base.entity';
