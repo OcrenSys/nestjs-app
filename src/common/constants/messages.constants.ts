@@ -7,7 +7,11 @@ export const MODEL = Object.freeze({
   DeliveryType: 'Delivery Type',
   PaymentType: 'Payment Type',
   Product: 'Product',
+  PurchaseOrder: 'Purchase Order',
+  PurchaseOrderDetail: 'Purchase Order Detail',
   Role: 'Role',
+  SaleOrder: 'Sale Order',
+  SaleOrderDetail: 'Sale Order Detail',
 });
 
 export const ACTION_CREATE = Object.freeze({
