@@ -1,16 +1,10 @@
 import { Product } from '../../../api/product/entities/product.entity';
-import { Column, Entity } from 'typeorm';
-import { PurchaseOrder } from '../../../api/purchase-order/entities/purchase-order.entity';
+import { Column, Entity, ManyToOne, OneToOne } from 'typeorm';
 import { Base } from '../../../common/models/base.entity';
+import { SaleOrder } from '../../../api/sale-order/entities/sale-order.entity';
 
 @Entity()
 export class SaleOrderDetail extends Base {
-  @Column()
-  purchaseOrder: PurchaseOrder;
-
-  @Column()
-  product: Product;
-
   @Column()
   quantity: number;
 
@@ -19,4 +13,16 @@ export class SaleOrderDetail extends Base {
 
   @Column()
   shippingCost: number;
+
+  @ManyToOne(
+    () => SaleOrderDetail,
+    (SaleOrderDetail) => SaleOrderDetail.saleOrder,
+    { nullable: true },
+  )
+  saleOrder: SaleOrder;
+
+  @OneToOne(() => Product, (product) => product.saleOrderDetail, {
+    nullable: true,
+  })
+  product: Product;
 }

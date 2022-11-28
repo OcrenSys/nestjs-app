@@ -1,6 +1,8 @@
 import { Base } from '../../../common/models/base.entity';
-import { Column, Entity, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToOne } from 'typeorm';
 import { Brand } from '../../../api/brand/entities/brand.entity';
+import { PurchaseOrderDetail } from '../../../api/purchase-order-detail/entities/purchase-order-detail.entity';
+import { SaleOrderDetail } from '../../../api/sale-order-detail/entities/sale-order-detail.entity';
 
 @Entity()
 export class Product extends Base {
@@ -13,14 +15,6 @@ export class Product extends Base {
   @Column({
     length: 2000,
     nullable: true,
-    // transformer: {
-    //   from(value: string | null): URL | string | null {
-    //     return value !== null ? new URL(value) : value;
-    //   },
-    //   to(value: URL | string | null): string | null {
-    //     return value?.toString() || null;
-    //   },
-    // },
   })
   link: string;
 
@@ -44,4 +38,18 @@ export class Product extends Base {
 
   @ManyToOne(() => Brand, (brand) => brand.products, { nullable: true })
   brand: Brand;
+
+  @OneToOne(
+    () => PurchaseOrderDetail,
+    (purchaseOrderDetail) => purchaseOrderDetail.product,
+    { nullable: true },
+  )
+  purchaseOrderDetail: PurchaseOrderDetail;
+
+  @OneToOne(
+    () => SaleOrderDetail,
+    (saleOrderDetail) => saleOrderDetail.product,
+    { nullable: true },
+  )
+  saleOrderDetail: SaleOrderDetail;
 }
