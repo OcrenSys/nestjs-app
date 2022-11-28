@@ -14,7 +14,7 @@ import {
   ONLY_ONE,
   ACTION_UPDATE,
   ACTION_REMOVE,
-} from 'src/common/constants/messages.constants';
+} from '../../common/constants/messages.constants';
 import { QueryRunner, Repository, DataSource } from 'typeorm';
 import { CreatePaymentTypeDto } from './dto/create-payment-type.dto';
 import { UpdatePaymentTypeDto } from './dto/update-payment-type.dto';
