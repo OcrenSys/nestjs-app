@@ -1,5 +1,6 @@
 import { Base } from '../../../common/models/base.entity';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
+import { SaleOrder } from '../../../api/sale-order/entities/sale-order.entity';
 
 @Entity()
 export class PaymentType extends Base {
@@ -8,4 +9,9 @@ export class PaymentType extends Base {
 
   @Column({ default: true })
   isActive: boolean;
+
+  @ManyToOne(() => SaleOrder, (saleOrder) => saleOrder.advertisingSource, {
+    nullable: true,
+  })
+  saleOrder: SaleOrder;
 }

@@ -1,12 +1,13 @@
-import { Column, OneToMany } from 'typeorm';
+import { Column, Entity, OneToMany } from 'typeorm';
 import { Base } from '../../../common/models/base.entity';
-import { AdvertisingSource } from 'src/api/advertising-source/entities/advertising-source.entity';
-import { DeliveryType } from 'src/api/delivery-type/entities/delivery-type.entity';
-import { Customer } from 'src/api/customer/entities/customer.entity';
-import { PaymentType } from 'src/api/payment-type/entities/payment-type.entity';
-import { Authentication } from 'src/authentication/entities/authentication.entity';
-import { SaleOrderDetail } from 'src/api/sale-order-detail/entities/sale-order-detail.entity';
+import { AdvertisingSource } from '../../../api/advertising-source/entities/advertising-source.entity';
+import { DeliveryType } from '../../../api/delivery-type/entities/delivery-type.entity';
+import { Customer } from '../../../api/customer/entities/customer.entity';
+import { PaymentType } from '../../../api/payment-type/entities/payment-type.entity';
+import { Authentication } from '../../../authentication/entities/authentication.entity';
+import { SaleOrderDetail } from '../../../api/sale-order-detail/entities/sale-order-detail.entity';
 
+@Entity()
 export class SaleOrder extends Base {
   @Column()
   deliveryCharged: number;

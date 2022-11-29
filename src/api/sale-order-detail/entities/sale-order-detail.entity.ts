@@ -12,7 +12,10 @@ export class SaleOrderDetail extends Base {
   cost: number;
 
   @Column()
-  shippingCost: number;
+  price: number;
+
+  @Column()
+  exchangeRate: number;
 
   @ManyToOne(
     () => SaleOrderDetail,

@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "92ee7af0-d6f4-44d1-9bc5-d59356f2d21a",
+		"name": "sale order detail",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7289838"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"quantity\": 2,\r\n  \"cost\": 1,\r\n  \"price\": 1,\r\n  \"exchangeRate\": 1,\r\n  \"shippingCost\": 1,\r\n  \"saleOrder\": {},\r\n  \"product\": {}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/sale-order-detail/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sale-order-detail",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/sale-order-detail/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sale-order-detail",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findOne",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/sale-order-detail/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sale-order-detail",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"quantity\": 2,\r\n  \"cost\": 2,\r\n  \"price\": 2,\r\n  \"exchangeRate\": 2,\r\n  \"shippingCost\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/sale-order-detail/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sale-order-detail",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/sale-order/1{{base_url}}/sale-order-detail/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sale-order",
+						"1{{base_url}}",
+						"sale-order-detail",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
