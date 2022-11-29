@@ -1,4 +1,11 @@
-import { IsBoolean, IsString, MaxLength } from 'class-validator';
+import {
+  IsBoolean,
+  IsObject,
+  IsOptional,
+  IsString,
+  MaxLength,
+} from 'class-validator';
+import { SaleOrder } from 'src/api/sale-order/entities/sale-order.entity';
 import * as NUMBER from '../../../common/constants/number.contants';
 
 export class CreateAdvertisingSourceDto {
@@ -10,4 +17,8 @@ export class CreateAdvertisingSourceDto {
 
   @IsBoolean()
   isActive: boolean;
+
+  @IsObject()
+  @IsOptional()
+  saleOrder: SaleOrder;
 }

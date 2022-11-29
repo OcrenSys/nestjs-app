@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 
 services:
   api:
@@ -13,10 +13,9 @@ services:
     depends_on:
       - mysql
     volumes:
-      - ./:/usr/src/app/
+      - .:/usr/src/app
       - /usr/src/app/node_modules
-    command: >
-      sh -c "yarn && yarn run seed:run && yarn start:dev"
+    command: yarn run start:dev
     ports:
       - '${API_PORT_DEV}:${API_PORT_DEV}'
       - '${API_PORT_DEBUG}:${API_PORT_DEBUG}'
