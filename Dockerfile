@@ -2,7 +2,7 @@
 ################################################
 ################   Development   ###############
 ################################################
-FROM node:18-alpine As development
+FROM node:14-alpine3.11  AS development
 
 WORKDIR /usr/src/app
 
