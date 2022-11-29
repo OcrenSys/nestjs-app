@@ -5,7 +5,7 @@ import {
   IsString,
   MaxLength,
 } from 'class-validator';
-import { Product } from 'src/api/product/entities/product.entity';
+import { Product } from '../../../api/product/entities/product.entity';
 import * as NUMBER from '../../../common/constants/number.contants';
 
 export class CreateBrandDto {

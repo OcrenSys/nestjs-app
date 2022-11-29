@@ -4,7 +4,7 @@
 ################################################
 FROM node:14-alpine3.11  AS development
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/
 
 # Copy the package.jsons from host to container
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
@@ -22,7 +22,9 @@ EXPOSE 3000 9229
 
 # Build the app to the /dist folder
 
-RUN yarn build
+# RUN yarn start:dev
+CMD [ "yarn", "start:dev" ]
+
 
 
 ################################################

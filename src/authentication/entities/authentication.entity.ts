@@ -1,4 +1,5 @@
-import { ManyToMany, JoinTable, Column, Entity } from 'typeorm';
+import { SaleOrder } from '../../api/sale-order/entities/sale-order.entity';
+import { ManyToMany, JoinTable, Column, Entity, ManyToOne } from 'typeorm';
 import { Role } from '../../api/role/entities/role.entity';
 import { Base } from '../../common/models/base.entity';
 
@@ -16,4 +17,9 @@ export class Authentication extends Base {
   @ManyToMany(() => Role, (role) => role.users)
   @JoinTable()
   roles?: Role[];
+
+  @ManyToOne(() => SaleOrder, (saleOrder) => saleOrder.advertisingSource, {
+    nullable: true,
+  })
+  saleOrder: SaleOrder;
 }

@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "2b6b9313-9ebd-4296-92b8-da761c66c80d",
+		"name": "purchase order",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7289838"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"exchangeRate\": 36.8,\r\n  \"transactionDate\": \"2022-11-11 00:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/purchase-order/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"purchase-order",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/purchase-order/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"purchase-order",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findOne",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/purchase-order/2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"purchase-order",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"exchangeRate\": 0,\r\n  \"transactionDate\": \"2022-11-11 00:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/purchase-order/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"purchase-order",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/purchase-order/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"purchase-order",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

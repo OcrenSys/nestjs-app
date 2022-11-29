@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "78bd87f4-2f89-4d3c-a36c-35391132f7f0",
+		"name": "role",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7289838"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Admin\",\r\n    \"isActive\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/role/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"role",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/role/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"role",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findOne",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/role/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"role",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Transferencia BAC (updated)\",\r\n    \"isActive\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/payment-type/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"payment-type",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/role/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"role",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

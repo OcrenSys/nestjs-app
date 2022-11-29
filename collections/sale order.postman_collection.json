@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "b56441ca-19e7-4578-afc9-df5176c6cd9e",
+		"name": "sale order",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7289838"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"deliveryCharged\": 36.8,\r\n  \"receipNumber\": 36.8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/sale-order/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sale-order",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/sale-order/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sale-order",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findOne",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/sale-order/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sale-order",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"exchangeRate\": 0,\r\n  \"transactionDate\": \"2022-11-11 00:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/sale-order/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sale-order",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/sale-order/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"sale-order",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
