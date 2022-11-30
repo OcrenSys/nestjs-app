@@ -67,7 +67,7 @@ export class CustomerService {
 
   async findAll() {
     const filters = {};
-    const relations = [];
+    const relations = ['saleOrder'];
 
     try {
       const customers = await this.customerRepository.find({
@@ -95,7 +95,7 @@ export class CustomerService {
 
   async findOne(id: number) {
     const filters = { id };
-    const relations = [];
+    const relations = ['saleOrder'];
 
     try {
       const customer: Customer = await this.customerRepository.findOne({

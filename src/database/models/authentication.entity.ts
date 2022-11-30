@@ -15,7 +15,7 @@ export class Authentication extends Base {
   password: string;
 
   @ManyToMany(() => Role, (role) => role.users)
-  @JoinTable()
+  @JoinTable({ name: 'users_roles' })
   roles?: Role[];
 
   @ManyToOne(() => SaleOrder, (saleOrder) => saleOrder.advertisingSource, {

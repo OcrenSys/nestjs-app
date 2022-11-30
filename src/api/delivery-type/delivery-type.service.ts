@@ -67,7 +67,7 @@ export class DeliveryTypeService {
 
   async findAll() {
     const filters = {};
-    const relations = [];
+    const relations = ['saleOrder'];
 
     try {
       const beliveryTypes = await this.beliveryTypeRepository.find({
@@ -95,7 +95,7 @@ export class DeliveryTypeService {
 
   async findOne(id: number) {
     const filters = { id };
-    const relations = [];
+    const relations = ['saleOrder'];
 
     try {
       const beliveryType: DeliveryType =

@@ -68,7 +68,7 @@ export class PurchaseOrderDetailService {
 
   async findAll() {
     const filters = {};
-    const relations = [];
+    const relations = ['product', 'purchaseOrder'];
 
     try {
       const purchaseOrderDetails =
@@ -97,7 +97,7 @@ export class PurchaseOrderDetailService {
 
   async findOne(id: number) {
     const filters = { id };
-    const relations = [];
+    const relations = ['product', 'purchaseOrder'];
 
     try {
       const purchaseOrderDetail: PurchaseOrderDetail =

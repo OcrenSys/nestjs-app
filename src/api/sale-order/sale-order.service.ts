@@ -67,7 +67,14 @@ export class SaleOrderService {
 
   async findAll() {
     const filters = {};
-    const relations = [];
+    const relations = [
+      'saleOrderDetail',
+      'advertisingSource',
+      'deliveryType',
+      'customer',
+      'paymentType',
+      'user',
+    ];
 
     try {
       const saleOrders = await this.saleOrderRepository.find({
@@ -95,7 +102,14 @@ export class SaleOrderService {
 
   async findOne(id: number) {
     const filters = { id };
-    const relations = [];
+    const relations = [
+      'saleOrderDetail',
+      'advertisingSource',
+      'deliveryType',
+      'customer',
+      'paymentType',
+      'user',
+    ];
 
     try {
       const saleOrder: SaleOrder = await this.saleOrderRepository.findOne({

@@ -69,7 +69,7 @@ export class SaleOrderDetailService {
 
   async findAll() {
     const filters = {};
-    const relations = [];
+    const relations = ['product', 'saleOrder'];
 
     try {
       const saleOrderDetails = await this.saleOrderDetailRepository.find({
@@ -97,7 +97,7 @@ export class SaleOrderDetailService {
 
   async findOne(id: number) {
     const filters = { id };
-    const relations = [];
+    const relations = ['product', 'saleOrder'];
 
     try {
       const saleOrderDetail: SaleOrderDetail =

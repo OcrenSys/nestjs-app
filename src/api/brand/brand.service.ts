@@ -67,7 +67,7 @@ export class BrandService {
 
   async findAll() {
     const filters = {};
-    const relations = [];
+    const relations = ['products'];
 
     try {
       const brands = await this.brandRepository.find({
@@ -95,7 +95,7 @@ export class BrandService {
 
   async findOne(id: number) {
     const filters = { id };
-    const relations = [];
+    const relations = ['products'];
 
     try {
       const brand: Brand = await this.brandRepository.findOne({

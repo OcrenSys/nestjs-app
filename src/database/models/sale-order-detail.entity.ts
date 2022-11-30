@@ -1,5 +1,5 @@
 import { Product } from './product.entity';
-import { Column, Entity, ManyToOne, OneToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne } from 'typeorm';
 import { Base } from '../../common/models/base.entity';
 import { SaleOrder } from './sale-order.entity';
 
@@ -27,5 +27,6 @@ export class SaleOrderDetail extends Base {
   @OneToOne(() => Product, (product) => product.saleOrderDetail, {
     nullable: true,
   })
+  @JoinColumn()
   product: Product;
 }

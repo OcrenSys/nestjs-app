@@ -67,7 +67,7 @@ export class PaymentTypeService {
 
   async findAll() {
     const filters = {};
-    const relations = [];
+    const relations = ['saleOrder'];
 
     try {
       const paymentTypes = await this.paymentTypeRepository.find({
@@ -95,7 +95,7 @@ export class PaymentTypeService {
 
   async findOne(id: number) {
     const filters = { id };
-    const relations = [];
+    const relations = ['saleOrder'];
 
     try {
       const paymentType: PaymentType = await this.paymentTypeRepository.findOne(

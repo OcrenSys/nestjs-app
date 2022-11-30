@@ -69,7 +69,7 @@ export class AdvertisingSourceService {
 
   async findAll() {
     const filters = {};
-    const relations = [];
+    const relations = ['saleOrder'];
 
     try {
       const advertisingSources = await this.advertisingSourceRepository.find({
@@ -97,7 +97,7 @@ export class AdvertisingSourceService {
 
   async findOne(id: number) {
     const filters = { id };
-    const relations = [];
+    const relations = ['saleOrder'];
 
     try {
       const advertisingSource: AdvertisingSource =

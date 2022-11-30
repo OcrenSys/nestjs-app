@@ -67,7 +67,7 @@ export class PurchaseOrderService {
 
   async findAll() {
     const filters = {};
-    const relations = [];
+    const relations = ['purchaseOrderDetail'];
 
     try {
       const purchaseOrders = await this.purchaseOrderRepository.find({
@@ -95,7 +95,7 @@ export class PurchaseOrderService {
 
   async findOne(id: number) {
     const filters = { id };
-    const relations = [];
+    const relations = ['purchaseOrderDetail'];
 
     try {
       const purchaseOrder: PurchaseOrder =

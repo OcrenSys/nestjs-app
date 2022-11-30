@@ -67,7 +67,7 @@ export class RoleService {
 
   async findAll() {
     const filters = {};
-    const relations = [];
+    const relations = ['users'];
 
     try {
       const roles = await this.roleRepository.find({
@@ -95,7 +95,7 @@ export class RoleService {
 
   async findOne(id: number) {
     const filters = { id };
-    const relations = [];
+    const relations = ['users'];
 
     try {
       const role: Role = await this.roleRepository.findOne({
