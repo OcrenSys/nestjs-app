@@ -18,7 +18,7 @@ import {
 import { QueryRunner, Repository, DataSource } from 'typeorm';
 import { CreateCustomerDto } from './dto/create-customer.dto';
 import { UpdateCustomerDto } from './dto/update-customer.dto';
-import { Customer } from './entities/customer.entity';
+import { Customer } from '../../database/models/customer.entity';
 
 @Injectable()
 export class CustomerService {

@@ -5,7 +5,7 @@ import {
   IsString,
   MaxLength,
 } from 'class-validator';
-import { SaleOrder } from 'src/api/sale-order/entities/sale-order.entity';
+import { SaleOrder } from 'src/database/models/sale-order.entity';
 import * as NUMBER from '../../../common/constants/number.contants';
 
 export class CreateAdvertisingSourceDto {

@@ -1,7 +1,7 @@
 import { Column, Entity, ManyToOne } from 'typeorm';
-import { Base } from '../../../common/models/base.entity';
-import * as NUMBER from '../../../common/constants/number.contants';
-import { SaleOrder } from '../../../api/sale-order/entities/sale-order.entity';
+import { Base } from '../../common/models/base.entity';
+import * as NUMBER from '../../common/constants/number.contants';
+import { SaleOrder } from './sale-order.entity';
 
 @Entity()
 export class AdvertisingSource extends Base {

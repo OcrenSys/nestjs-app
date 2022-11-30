@@ -18,7 +18,7 @@ import {
 import { QueryRunner, Repository, DataSource } from 'typeorm';
 import { CreateSaleOrderDto } from './dto/create-sale-order.dto';
 import { UpdateSaleOrderDto } from './dto/update-sale-order.dto';
-import { SaleOrder } from './entities/sale-order.entity';
+import { SaleOrder } from '../../database/models/sale-order.entity';
 
 @Injectable()
 export class SaleOrderService {

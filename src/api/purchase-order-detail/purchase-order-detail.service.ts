@@ -18,7 +18,7 @@ import {
 import { QueryRunner, Repository, DataSource } from 'typeorm';
 import { CreatePurchaseOrderDetailDto } from './dto/create-purchase-order-detail.dto';
 import { UpdatePurchaseOrderDetailDto } from './dto/update-purchase-order-detail.dto';
-import { PurchaseOrderDetail } from './entities/purchase-order-detail.entity';
+import { PurchaseOrderDetail } from '../../database/models/purchase-order-detail.entity';
 
 @Injectable()
 export class PurchaseOrderDetailService {

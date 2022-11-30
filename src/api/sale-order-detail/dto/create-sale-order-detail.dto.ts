@@ -1,6 +1,6 @@
 import { IsNumber, IsObject, IsOptional, Min } from 'class-validator';
-import { SaleOrder } from '../../../api/sale-order/entities/sale-order.entity';
-import { Product } from '../../../api/product/entities/product.entity';
+import { SaleOrder } from '../../../database/models/sale-order.entity';
+import { Product } from '../../../database/models/product.entity';
 import * as NUMBER from '../../../common/constants/number.contants';
 
 export class CreateSaleOrderDetailDto {

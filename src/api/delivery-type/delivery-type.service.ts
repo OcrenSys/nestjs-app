@@ -18,7 +18,7 @@ import {
 import { QueryRunner, Repository, DataSource } from 'typeorm';
 import { CreateDeliveryTypeDto } from './dto/create-delivery-type.dto';
 import { UpdateDeliveryTypeDto } from './dto/update-delivery-type.dto';
-import { DeliveryType } from './entities/delivery-type.entity';
+import { DeliveryType } from '../../database/models/delivery-type.entity';
 
 @Injectable()
 export class DeliveryTypeService {

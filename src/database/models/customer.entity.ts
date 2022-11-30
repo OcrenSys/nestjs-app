@@ -1,6 +1,6 @@
-import { SaleOrder } from '../../../api/sale-order/entities/sale-order.entity';
+import { SaleOrder } from './sale-order.entity';
 import { Column, Entity, ManyToOne } from 'typeorm';
-import { Base } from '../../../common/models/base.entity';
+import { Base } from '../../common/models/base.entity';
 
 @Entity()
 export class Customer extends Base {

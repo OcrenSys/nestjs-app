@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { PurchaseOrderDetailService } from './purchase-order-detail.service';
 import { PurchaseOrderDetailController } from './purchase-order-detail.controller';
-import { PurchaseOrderDetail } from './entities/purchase-order-detail.entity';
+import { PurchaseOrderDetail } from '../../database/models/purchase-order-detail.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({

@@ -1,8 +1,8 @@
-import { Base } from '../../../common/models/base.entity';
+import { Base } from '../../common/models/base.entity';
 import { Column, Entity, ManyToOne, OneToOne } from 'typeorm';
-import { Brand } from '../../../api/brand/entities/brand.entity';
-import { PurchaseOrderDetail } from '../../../api/purchase-order-detail/entities/purchase-order-detail.entity';
-import { SaleOrderDetail } from '../../../api/sale-order-detail/entities/sale-order-detail.entity';
+import { Brand } from './brand.entity';
+import { PurchaseOrderDetail } from './purchase-order-detail.entity';
+import { SaleOrderDetail } from './sale-order-detail.entity';
 
 @Entity()
 export class Product extends Base {

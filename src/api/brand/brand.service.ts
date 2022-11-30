@@ -18,7 +18,7 @@ import {
 import { Repository, DataSource, QueryRunner } from 'typeorm';
 import { CreateBrandDto } from './dto/create-brand.dto';
 import { UpdateBrandDto } from './dto/update-brand.dto';
-import { Brand } from './entities/brand.entity';
+import { Brand } from '../../database/models/brand.entity';
 
 @Injectable()
 export class BrandService {

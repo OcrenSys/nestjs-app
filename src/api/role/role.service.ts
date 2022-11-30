@@ -18,7 +18,7 @@ import {
 import { QueryRunner, Repository, DataSource } from 'typeorm';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { UpdateRoleDto } from './dto/update-role.dto';
-import { Role } from './entities/role.entity';
+import { Role } from '../../database/models/role.entity';
 
 @Injectable()
 export class RoleService {

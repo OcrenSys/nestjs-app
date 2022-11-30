@@ -18,7 +18,7 @@ import {
 import { QueryRunner, Repository, DataSource } from 'typeorm';
 import { CreatePaymentTypeDto } from './dto/create-payment-type.dto';
 import { UpdatePaymentTypeDto } from './dto/update-payment-type.dto';
-import { PaymentType } from './entities/payment-type.entity';
+import { PaymentType } from '../../database/models/payment-type.entity';
 
 @Injectable()
 export class PaymentTypeService {

@@ -7,7 +7,7 @@ import {
   MaxLength,
   Min,
 } from 'class-validator';
-import { Brand } from '../../../api/brand/entities/brand.entity';
+import { Brand } from '../../../database/models/brand.entity';
 import * as NUMBER from '../../../common/constants/number.contants';
 
 export class CreateProductDto {

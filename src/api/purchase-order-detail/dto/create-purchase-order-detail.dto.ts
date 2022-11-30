@@ -1,6 +1,6 @@
 import { IsNumber, IsObject, IsOptional } from 'class-validator';
-import { Product } from 'src/api/product/entities/product.entity';
-import { PurchaseOrder } from 'src/api/purchase-order/entities/purchase-order.entity';
+import { Product } from 'src/database/models/product.entity';
+import { PurchaseOrder } from 'src/database/models/purchase-order.entity';
 
 export class CreatePurchaseOrderDetailDto {
   @IsNumber()

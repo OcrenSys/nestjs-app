@@ -1,6 +1,6 @@
-import { SaleOrder } from '../../api/sale-order/entities/sale-order.entity';
+import { SaleOrder } from './sale-order.entity';
 import { ManyToMany, JoinTable, Column, Entity, ManyToOne } from 'typeorm';
-import { Role } from '../../api/role/entities/role.entity';
+import { Role } from './role.entity';
 import { Base } from '../../common/models/base.entity';
 
 @Entity()

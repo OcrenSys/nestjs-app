@@ -1,9 +1,9 @@
-import { SaleOrder } from '../../../api/sale-order/entities/sale-order.entity';
+import { Base } from '../../common/models/base.entity';
 import { Column, Entity, ManyToOne } from 'typeorm';
-import { Base } from '../../../common/models/base.entity';
+import { SaleOrder } from './sale-order.entity';
 
 @Entity()
-export class DeliveryType extends Base {
+export class PaymentType extends Base {
   @Column({ nullable: false })
   name: string;
 

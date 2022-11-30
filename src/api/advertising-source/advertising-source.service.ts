@@ -18,7 +18,7 @@ import {
 import { Repository, DataSource } from 'typeorm';
 import { CreateAdvertisingSourceDto } from './dto/create-advertising-source.dto';
 import { UpdateAdvertisingSourceDto } from './dto/update-advertising-source.dto';
-import { AdvertisingSource } from './entities/advertising-source.entity';
+import { AdvertisingSource } from '../../database/models/advertising-source.entity';
 
 @Injectable()
 export class AdvertisingSourceService {

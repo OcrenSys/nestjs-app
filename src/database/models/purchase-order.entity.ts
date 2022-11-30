@@ -1,6 +1,6 @@
-import { PurchaseOrderDetail } from '../../../api/purchase-order-detail/entities/purchase-order-detail.entity';
+import { PurchaseOrderDetail } from './purchase-order-detail.entity';
 import { Entity, Column, OneToMany } from 'typeorm';
-import { Base } from '../../../common/models/base.entity';
+import { Base } from '../../common/models/base.entity';
 
 @Entity()
 export class PurchaseOrder extends Base {
