@@ -32,14 +32,17 @@ export class ProductService {
   ) {}
 
   async create(createProductDto: CreateProductDto) {
-    const { ...toCreate } = createProductDto;
+    const { brand = null, ...toCreate } = createProductDto;
 
     this.queryRunner = this.dataSource.createQueryRunner();
     await this.queryRunner.connect();
     await this.queryRunner.startTransaction();
 
     try {
-      const product = await this.productRepository.create(toCreate);
+      const product = await this.productRepository.create({
+        brand,
+        ...toCreate,
+      });
 
       this.productRepository.save(product);
 
@@ -131,7 +134,7 @@ export class ProductService {
   }
 
   async update(id: number, updateProductDto: UpdateProductDto) {
-    const { ...toUpdate } = updateProductDto;
+    const { brand = null, ...toUpdate } = updateProductDto;
 
     this.queryRunner = this.dataSource.createQueryRunner();
     await this.queryRunner.connect();
@@ -139,6 +142,7 @@ export class ProductService {
 
     const product: Product = await this.productRepository.preload({
       id,
+      brand,
       ...toUpdate,
     });
 

@@ -32,7 +32,11 @@ export class PurchaseOrderDetailService {
   ) {}
 
   async create(createPurchaseOrderDetailDto: CreatePurchaseOrderDetailDto) {
-    const { ...toCreate } = createPurchaseOrderDetailDto;
+    const {
+      product = null,
+      purchaseOrder = null,
+      ...toCreate
+    } = createPurchaseOrderDetailDto;
 
     this.queryRunner = this.dataSource.createQueryRunner();
     await this.queryRunner.connect();
@@ -40,7 +44,11 @@ export class PurchaseOrderDetailService {
 
     try {
       const purchaseOrderDetail =
-        await this.purchaseOrderDetailRepository.create(toCreate);
+        await this.purchaseOrderDetailRepository.create({
+          product,
+          purchaseOrder,
+          ...toCreate,
+        });
 
       this.purchaseOrderDetailRepository.save(purchaseOrderDetail);
 
@@ -137,7 +145,11 @@ export class PurchaseOrderDetailService {
     id: number,
     updatePurchaseOrderDetailDto: UpdatePurchaseOrderDetailDto,
   ) {
-    const { ...toUpdate } = updatePurchaseOrderDetailDto;
+    const {
+      product = null,
+      purchaseOrder = null,
+      ...toUpdate
+    } = updatePurchaseOrderDetailDto;
 
     this.queryRunner = this.dataSource.createQueryRunner();
     await this.queryRunner.connect();
@@ -146,6 +158,8 @@ export class PurchaseOrderDetailService {
     const purchaseOrderDetail: PurchaseOrderDetail =
       await this.purchaseOrderDetailRepository.preload({
         id,
+        product,
+        purchaseOrder,
         ...toUpdate,
       });
 

@@ -32,14 +32,28 @@ export class SaleOrderService {
   ) {}
 
   async create(createSaleOrderDto: CreateSaleOrderDto) {
-    const { ...toCreate } = createSaleOrderDto;
+    const {
+      advertisingSource = null,
+      customer = null,
+      deliveryType = null,
+      paymentType = null,
+      saleOrderDetail = null,
+      ...toCreate
+    } = createSaleOrderDto;
 
     this.queryRunner = this.dataSource.createQueryRunner();
     await this.queryRunner.connect();
     await this.queryRunner.startTransaction();
 
     try {
-      const saleOrder = await this.saleOrderRepository.create(toCreate);
+      const saleOrder = await this.saleOrderRepository.create({
+        advertisingSource,
+        customer,
+        deliveryType,
+        paymentType,
+        saleOrderDetail,
+        ...toCreate,
+      });
 
       this.saleOrderRepository.save(saleOrder);
 
@@ -145,7 +159,14 @@ export class SaleOrderService {
   }
 
   async update(id: number, updateSaleOrderDto: UpdateSaleOrderDto) {
-    const { ...toUpdate } = updateSaleOrderDto;
+    const {
+      advertisingSource = null,
+      customer = null,
+      deliveryType = null,
+      paymentType = null,
+      saleOrderDetail = null,
+      ...toUpdate
+    } = updateSaleOrderDto;
 
     this.queryRunner = this.dataSource.createQueryRunner();
     await this.queryRunner.connect();
@@ -153,6 +174,11 @@ export class SaleOrderService {
 
     const saleOrder: SaleOrder = await this.saleOrderRepository.preload({
       id,
+      advertisingSource,
+      customer,
+      deliveryType,
+      paymentType,
+      saleOrderDetail,
       ...toUpdate,
     });
 
