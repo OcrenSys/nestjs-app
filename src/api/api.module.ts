@@ -13,7 +13,7 @@ import { PurchaseOrderModule } from './purchase-order/purchase-order.module';
 import { RoleModule } from './role/role.module';
 import { SaleOrderDetailModule } from './sale-order-detail/sale-order-detail.module';
 import { SaleOrderModule } from './sale-order/sale-order.module';
-import { ProductStock } from '../database/models/product-stock.entity';
+import { ProductStockModule } from './product-stock/product-stock.module';
 
 @Module({
   imports: [
@@ -29,7 +29,7 @@ import { ProductStock } from '../database/models/product-stock.entity';
     PurchaseOrderModule,
     RoleModule,
     AuthenticationModule,
-    ProductStock,
+    ProductStockModule,
   ],
   controllers: [],
   providers: [
