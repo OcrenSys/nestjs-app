@@ -3,6 +3,7 @@ import { Column, Entity, ManyToOne, OneToOne } from 'typeorm';
 import { Brand } from './brand.entity';
 import { PurchaseOrderDetail } from './purchase-order-detail.entity';
 import { SaleOrderDetail } from './sale-order-detail.entity';
+import { ProductStock } from './product-stock.entity';
 
 @Entity()
 export class Product extends Base {
@@ -52,4 +53,9 @@ export class Product extends Base {
     { nullable: true },
   )
   saleOrderDetail: SaleOrderDetail;
+
+  @OneToOne(() => ProductStock, (productStock) => productStock.product, {
+    nullable: true,
+  })
+  productStock: ProductStock;
 }

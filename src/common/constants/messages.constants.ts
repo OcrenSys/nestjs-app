@@ -7,6 +7,7 @@ export const MODEL = Object.freeze({
   DeliveryType: 'Delivery Type',
   PaymentType: 'Payment Type',
   Product: 'Product',
+  ProductStock: 'Product Stock',
   PurchaseOrder: 'Purchase Order',
   PurchaseOrderDetail: 'Purchase Order Detail',
   Role: 'Role',
