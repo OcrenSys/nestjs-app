@@ -14,7 +14,7 @@ import {
   ONLY_ONE,
   ACTION_UPDATE,
   ACTION_REMOVE,
-} from 'src/common/constants/messages.constants';
+} from '../../common/constants/messages.constants';
 import { QueryRunner, Repository, DataSource } from 'typeorm';
 import { CreatePurchaseOrderDto } from './dto/create-purchase-order.dto';
 import { UpdatePurchaseOrderDto } from './dto/update-purchase-order.dto';

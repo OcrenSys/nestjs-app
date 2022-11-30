@@ -1,10 +1,10 @@
 import { IsNumber, IsObject, IsOptional } from 'class-validator';
-import { AdvertisingSource } from 'src/database/models/advertising-source.entity';
-import { Customer } from 'src/database/models/customer.entity';
-import { DeliveryType } from 'src/database/models/delivery-type.entity';
-import { PaymentType } from 'src/database/models/payment-type.entity';
-import { SaleOrderDetail } from 'src/database/models/sale-order-detail.entity';
-import { Authentication } from 'src/database/models/authentication.entity';
+import { AdvertisingSource } from '../../../database/models/advertising-source.entity';
+import { Customer } from '../../../database/models/customer.entity';
+import { DeliveryType } from '../../../database/models/delivery-type.entity';
+import { PaymentType } from '../../../database/models/payment-type.entity';
+import { SaleOrderDetail } from '../../../database/models/sale-order-detail.entity';
+import { Authentication } from '../../../database/models/authentication.entity';
 export class CreateSaleOrderDto {
   @IsNumber()
   deliveryCharged: number;
