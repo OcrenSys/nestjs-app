@@ -8,7 +8,7 @@ export class Brand extends Base {
   description: string;
 
   @OneToMany(() => Product, (product) => product.brand)
-  products: Product[];
+  products?: Product[];
 
   @Column({ default: true })
   isActive: boolean;
