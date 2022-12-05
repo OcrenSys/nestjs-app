@@ -5,6 +5,7 @@ export const MODEL = Object.freeze({
   Brand: 'Brand',
   Customer: 'Customer',
   DeliveryType: 'Delivery Type',
+  Logger: 'Logger',
   PaymentType: 'Payment Type',
   Product: 'Product',
   ProductStock: 'Product Stock',

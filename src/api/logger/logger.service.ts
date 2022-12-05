@@ -3,7 +3,6 @@ import {
   HttpStatus,
   Injectable,
   InternalServerErrorException,
-  Logger,
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -15,43 +14,39 @@ import {
   ACTION_UPDATE,
   ACTION_REMOVE,
 } from '../../common/constants/messages.constants';
-import { ProductStock } from '../../database/models/product-stock.entity';
+import { Logger } from '../../database/models/logger.entity';
 import { QueryRunner, Repository, DataSource } from 'typeorm';
-import { CreateProductStockDto } from './dto/create-product-stock.dto';
-import { UpdateProductStockDto } from './dto/update-product-stock.dto';
+import { CreateLoggerDto } from './dto/create-logger.dto';
+import { UpdateLoggerDto } from './dto/update-logger.dto';
 
 @Injectable()
-export class ProductStockService {
-  private readonly logger: Logger = new Logger('ProductStockService');
+export class LoggerService {
   private queryRunner: QueryRunner;
 
   constructor(
-    @InjectRepository(ProductStock)
-    private readonly productStockRepository: Repository<ProductStock>,
+    @InjectRepository(Logger)
+    private readonly loggerRepository: Repository<Logger>,
     private readonly dataSource: DataSource,
   ) {}
 
-  async create(createProductStockDto: CreateProductStockDto) {
-    const { product = null, ...toCreate } = createProductStockDto;
+  async create(createLoggerDto: CreateLoggerDto) {
+    const { ...toCreate } = createLoggerDto;
 
     this.queryRunner = this.dataSource.createQueryRunner();
     await this.queryRunner.connect();
     await this.queryRunner.startTransaction();
 
     try {
-      const productStock = await this.productStockRepository.create({
-        product,
-        ...toCreate,
-      });
+      const logger = await this.loggerRepository.create(toCreate);
 
-      this.productStockRepository.save(productStock);
+      this.loggerRepository.save(logger);
 
       await this.queryRunner.commitTransaction();
 
       return {
-        data: productStock,
+        data: logger,
         statusCode: HttpStatus.CREATED,
-        message: ACTION_CREATE.success(MODEL.ProductStock),
+        message: ACTION_CREATE.success(MODEL.Logger),
       };
     } catch (error) {
       this.queryRunner.rollbackTransaction();
@@ -59,9 +54,9 @@ export class ProductStockService {
         {
           data: error,
           status: HttpStatus.INTERNAL_SERVER_ERROR,
-          message: ACTION_CREATE.error(MODEL.ProductStock),
+          message: ACTION_CREATE.error(MODEL.Logger),
         },
-        ACTION_CREATE.error(MODEL.ProductStock),
+        ACTION_CREATE.error(MODEL.Logger),
       );
     } finally {
       this.queryRunner.release();
@@ -70,103 +65,99 @@ export class ProductStockService {
 
   async findAll() {
     const filters = {};
-    const relations = ['products'];
+    const relations = ['user'];
 
     try {
-      const productStocks = await this.productStockRepository.find({
+      const loggers = await this.loggerRepository.find({
         where: filters,
         relations,
       });
 
       return {
-        data: productStocks,
+        data: loggers,
         statusCode: HttpStatus.OK,
-        message: ACTION_FIND.success(MODEL.ProductStock),
+        message: ACTION_FIND.success(MODEL.Logger),
       };
     } catch (error) {
-      this.logger.error(error?.message, error);
       throw new NotFoundException(
         {
           data: error,
           status: HttpStatus.NOT_FOUND,
-          message: ACTION_FIND.error(MODEL.ProductStock),
+          message: ACTION_FIND.error(MODEL.Logger),
         },
-        ACTION_FIND.error(MODEL.ProductStock),
+        ACTION_FIND.error(MODEL.Logger),
       );
     }
   }
 
   async findOne(id: number) {
     const filters = { id };
-    const relations = ['products'];
+    const relations = ['user'];
 
     try {
-      const productStock: ProductStock =
-        await this.productStockRepository.findOne({
-          relations,
-          where: filters,
-        });
+      const logger: Logger = await this.loggerRepository.findOne({
+        relations,
+        where: filters,
+      });
 
-      if (!productStock)
+      if (!logger)
         return new NotFoundException(
           {
             data: null,
             status: HttpStatus.NOT_FOUND,
-            message: ACTION_FIND.error(MODEL.ProductStock, ONLY_ONE),
+            message: ACTION_FIND.error(MODEL.Logger, ONLY_ONE),
           },
-          ACTION_FIND.error(MODEL.ProductStock, ONLY_ONE),
+          ACTION_FIND.error(MODEL.Logger, ONLY_ONE),
         );
 
       return {
-        data: productStock,
+        data: logger,
         statusCode: HttpStatus.OK,
-        message: ACTION_FIND.success(MODEL.ProductStock, ONLY_ONE),
+        message: ACTION_FIND.success(MODEL.Logger, ONLY_ONE),
       };
     } catch (error) {
       throw new InternalServerErrorException(
         {
           data: error,
           status: HttpStatus.INTERNAL_SERVER_ERROR,
-          message: ACTION_FIND.error(MODEL.ProductStock, ONLY_ONE),
+          message: ACTION_FIND.error(MODEL.Logger, ONLY_ONE),
         },
-        ACTION_FIND.error(MODEL.ProductStock),
+        ACTION_FIND.error(MODEL.Logger),
       );
     }
   }
 
-  async update(id: number, updateProductStockDto: UpdateProductStockDto) {
-    const { product = null, ...toUpdate } = updateProductStockDto;
+  async update(id: number, updateLoggerDto: UpdateLoggerDto) {
+    const { ...toUpdate } = updateLoggerDto;
 
     this.queryRunner = this.dataSource.createQueryRunner();
     await this.queryRunner.connect();
     await this.queryRunner.startTransaction();
 
-    const productStock: ProductStock =
-      await this.productStockRepository.preload({
-        id,
-        product,
-        ...toUpdate,
-      });
+    const logger: Logger = await this.loggerRepository.preload({
+      id,
+      ...toUpdate,
+    });
 
-    if (!productStock)
+    if (!logger)
       return new NotFoundException(
         {
           data: null,
           status: HttpStatus.NOT_FOUND,
-          message: ACTION_UPDATE.error(MODEL.ProductStock),
+          message: ACTION_UPDATE.error(MODEL.Logger),
         },
-        ACTION_UPDATE.error(MODEL.ProductStock),
+        ACTION_UPDATE.error(MODEL.Logger),
       );
 
     try {
-      this.productStockRepository.save(productStock);
+      this.loggerRepository.save(logger);
 
       await this.queryRunner.commitTransaction();
 
       return {
-        data: productStock,
+        data: logger,
         statusCode: HttpStatus.OK,
-        message: ACTION_UPDATE.success(MODEL.ProductStock),
+        message: ACTION_UPDATE.success(MODEL.Logger),
       };
     } catch (error) {
       await this.queryRunner.rollbackTransaction();
@@ -174,9 +165,9 @@ export class ProductStockService {
         {
           data: error,
           status: HttpStatus.INTERNAL_SERVER_ERROR,
-          message: ACTION_UPDATE.error(MODEL.ProductStock),
+          message: ACTION_UPDATE.error(MODEL.Logger),
         },
-        ACTION_UPDATE.error(MODEL.ProductStock),
+        ACTION_UPDATE.error(MODEL.Logger),
       );
     } finally {
       await this.queryRunner.release();
@@ -184,35 +175,35 @@ export class ProductStockService {
   }
 
   async remove(id: number) {
-    const productStock = await this.productStockRepository.findOne({
+    const logger = await this.loggerRepository.findOne({
       where: { id },
     });
 
-    if (!productStock)
+    if (!logger)
       return new NotFoundException(
         {
           data: null,
           status: HttpStatus.NOT_FOUND,
-          message: ACTION_UPDATE.error(MODEL.ProductStock),
+          message: ACTION_UPDATE.error(MODEL.Logger),
         },
-        ACTION_REMOVE.error(MODEL.ProductStock),
+        ACTION_REMOVE.error(MODEL.Logger),
       );
     try {
-      const result = await this.productStockRepository.delete(id);
+      const result = await this.loggerRepository.delete(id);
 
       return {
         data: result,
         statusCode: HttpStatus.OK,
-        message: ACTION_REMOVE.success(MODEL.ProductStock),
+        message: ACTION_REMOVE.success(MODEL.Logger),
       };
     } catch (error) {
       throw new InternalServerErrorException(
         {
           data: error,
           status: HttpStatus.INTERNAL_SERVER_ERROR,
-          message: ACTION_REMOVE.error(MODEL.ProductStock),
+          message: ACTION_REMOVE.error(MODEL.Logger),
         },
-        ACTION_REMOVE.error(MODEL.ProductStock),
+        ACTION_REMOVE.error(MODEL.Logger),
       );
     }
   }

@@ -63,5 +63,11 @@ export const N300 = 300;
 export const N400 = 400;
 export const N450 = 450;
 export const N500 = 500;
+export const N1000 = 1000;
+export const N2000 = 2000;
+export const N3000 = 3000;
+export const N4000 = 4000;
+export const N5000 = 5000;
+export const N6000 = 6000;
 
 export const MAX = 999999;

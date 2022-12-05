@@ -14,6 +14,7 @@ import { RoleModule } from './role/role.module';
 import { SaleOrderDetailModule } from './sale-order-detail/sale-order-detail.module';
 import { SaleOrderModule } from './sale-order/sale-order.module';
 import { ProductStockModule } from './product-stock/product-stock.module';
+import { LoggerModule } from './logger/logger.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ProductStockModule } from './product-stock/product-stock.module';
     RoleModule,
     AuthenticationModule,
     ProductStockModule,
+    LoggerModule,
   ],
   controllers: [],
   providers: [

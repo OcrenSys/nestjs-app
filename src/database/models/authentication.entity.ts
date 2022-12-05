@@ -2,6 +2,7 @@ import { SaleOrder } from './sale-order.entity';
 import { ManyToMany, JoinTable, Column, Entity, ManyToOne } from 'typeorm';
 import { Role } from './role.entity';
 import { Base } from '../../common/models/base.entity';
+import { Logger } from './logger.entity';
 
 @Entity()
 export class Authentication extends Base {
@@ -22,4 +23,9 @@ export class Authentication extends Base {
     nullable: true,
   })
   saleOrder: SaleOrder;
+
+  @ManyToOne(() => Logger, (logger) => logger.user, {
+    nullable: true,
+  })
+  logger: Logger;
 }
