@@ -19,6 +19,8 @@ import { QueryRunner, Repository, DataSource } from 'typeorm';
 import { CreatePurchaseOrderDto } from './dto/create-purchase-order.dto';
 import { UpdatePurchaseOrderDto } from './dto/update-purchase-order.dto';
 import { PurchaseOrder } from '../../database/models/purchase-order.entity';
+import { PurchaseOrderDetail } from '../../database/models/purchase-order-detail.entity';
+import { CreatePurchaseOrderDetailDto } from '../purchase-order-detail/dto/create-purchase-order-detail.dto';
 
 @Injectable()
 export class PurchaseOrderService {
@@ -26,30 +28,42 @@ export class PurchaseOrderService {
   private queryRunner: QueryRunner;
 
   constructor(
+    @InjectRepository(PurchaseOrderDetail)
+    private readonly purchaseOrderDetailRepository: Repository<PurchaseOrderDetail>,
     @InjectRepository(PurchaseOrder)
     private readonly purchaseOrderRepository: Repository<PurchaseOrder>,
     private readonly dataSource: DataSource,
   ) {}
 
   async create(createPurchaseOrderDto: CreatePurchaseOrderDto) {
-    const { purchaseOrderDetail = null, ...toCreate } = createPurchaseOrderDto;
+    const { purchaseOrderDetails = [], ...toCreate } = createPurchaseOrderDto;
 
     this.queryRunner = this.dataSource.createQueryRunner();
     await this.queryRunner.connect();
     await this.queryRunner.startTransaction();
 
     try {
-      const purchaseOrder = await this.purchaseOrderRepository.create({
-        purchaseOrderDetail,
-        ...toCreate,
-      });
+      const _purchaseOrderCreated: PurchaseOrder =
+        this.purchaseOrderRepository.create({
+          purchaseOrderDetails: purchaseOrderDetails?.length
+            ? purchaseOrderDetails?.map(
+                ({ purchaseOrder, ...rest }: CreatePurchaseOrderDetailDto) =>
+                  this.purchaseOrderDetailRepository.create(rest),
+              )
+            : [],
+          ...toCreate,
+        });
 
-      this.purchaseOrderRepository.save(purchaseOrder);
+      if (!_purchaseOrderCreated) throw new BadRequestException();
+
+      const result = await this.purchaseOrderRepository.save(
+        _purchaseOrderCreated,
+      );
 
       await this.queryRunner.commitTransaction();
 
       return {
-        data: purchaseOrder,
+        data: result,
         statusCode: HttpStatus.CREATED,
         message: ACTION_CREATE.success(MODEL.PurchaseOrder),
       };
@@ -70,7 +84,7 @@ export class PurchaseOrderService {
 
   async findAll() {
     const filters = {};
-    const relations = ['purchaseOrderDetail'];
+    const relations = ['purchaseOrderDetails'];
 
     try {
       const purchaseOrders = await this.purchaseOrderRepository.find({
@@ -98,7 +112,7 @@ export class PurchaseOrderService {
 
   async findOne(id: number) {
     const filters = { id };
-    const relations = ['purchaseOrderDetail'];
+    const relations = ['purchaseOrderDetails'];
 
     try {
       const purchaseOrder: PurchaseOrder =
@@ -135,7 +149,7 @@ export class PurchaseOrderService {
   }
 
   async update(id: number, updatePurchaseOrderDto: UpdatePurchaseOrderDto) {
-    const { purchaseOrderDetail = null, ...toUpdate } = updatePurchaseOrderDto;
+    const { purchaseOrderDetails = [], ...toUpdate } = updatePurchaseOrderDto;
 
     this.queryRunner = this.dataSource.createQueryRunner();
     await this.queryRunner.connect();
@@ -144,7 +158,7 @@ export class PurchaseOrderService {
     const purchaseOrder: PurchaseOrder =
       await this.purchaseOrderRepository.preload({
         id,
-        purchaseOrderDetail,
+        purchaseOrderDetails: purchaseOrderDetails,
         ...toUpdate,
       });
 

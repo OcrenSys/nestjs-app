@@ -10,12 +10,14 @@ export class PurchaseOrderDetail extends Base {
 
   @ManyToOne(
     () => PurchaseOrder,
-    (purchaseOrder) => purchaseOrder.purchaseOrderDetail,
-    { nullable: true },
+    (purchaseOrder) => purchaseOrder.purchaseOrderDetails,
+    { onDelete: 'CASCADE' },
   )
   purchaseOrder: PurchaseOrder;
 
-  @OneToOne(() => Product, (product) => product.purchaseOrderDetail)
+  @OneToOne(() => Product, (product) => product.purchaseOrderDetail, {
+    eager: true,
+  })
   @JoinColumn()
   product: Product;
 }

@@ -1,4 +1,4 @@
-import { IsNumber, IsObject, IsOptional, IsString } from 'class-validator';
+import { IsArray, IsNumber, IsString, IsOptional } from 'class-validator';
 import { PurchaseOrderDetail } from '../../../database/models/purchase-order-detail.entity';
 
 export class CreatePurchaseOrderDto {
@@ -6,10 +6,12 @@ export class CreatePurchaseOrderDto {
   exchangeRate: number;
 
   @IsString()
-  @IsOptional()
   transactionDate: string;
 
-  @IsObject()
+  @IsString()
   @IsOptional()
-  purchaseOrderDetail: PurchaseOrderDetail[];
+  receptionDate: string;
+
+  @IsArray()
+  purchaseOrderDetails: PurchaseOrderDetail[];
 }

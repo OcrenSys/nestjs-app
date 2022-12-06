@@ -10,10 +10,13 @@ export class PurchaseOrder extends Base {
   @Column()
   transactionDate: string;
 
+  @Column()
+  receptionDate: string;
+
   @OneToMany(
     () => PurchaseOrderDetail,
     (purchaseOrderDetail) => purchaseOrderDetail.purchaseOrder,
-    { nullable: true },
+    { cascade: true },
   )
-  purchaseOrderDetail: PurchaseOrderDetail[];
+  purchaseOrderDetails: PurchaseOrderDetail[];
 }

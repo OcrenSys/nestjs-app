@@ -9,21 +9,21 @@ export class Logger extends Base {
   @Column({ default: '' })
   massage: string;
 
-  @Column({ default: '', length: NUMBER.N1000 })
-  @MaxLength(NUMBER.N1000, {
-    message: `The Logger's headers must contain at least ${NUMBER.N1000}`,
+  @Column({ default: '', length: NUMBER.N2000 })
+  @MaxLength(NUMBER.N2000, {
+    message: `The Logger's headers must contain at least ${NUMBER.N2000}`,
   })
   headers: string;
 
-  @Column({ default: '', length: NUMBER.N1000 })
-  @MaxLength(NUMBER.N1000, {
-    message: `The Logger's body must contain at least ${NUMBER.N1000}`,
+  @Column({ default: '', length: NUMBER.N2000 })
+  @MaxLength(NUMBER.N2000, {
+    message: `The Logger's body must contain at least ${NUMBER.N2000}`,
   })
   body: string;
 
-  @Column({ default: '', length: NUMBER.N1000 })
-  @MaxLength(NUMBER.N1000, {
-    message: `The Logger's url must contain at least ${NUMBER.N1000}`,
+  @Column({ default: '', length: NUMBER.N2000 })
+  @MaxLength(NUMBER.N2000, {
+    message: `The Logger's url must contain at least ${NUMBER.N2000}`,
   })
   url: string;
 
