@@ -26,7 +26,7 @@ export const typeOrmConfigAsync: TypeOrmModuleAsyncOptions = {
       },
       synchronize: true,
       dropSchema: false,
-      migrationsRun: true,
+      migrationsRun: false,
       logging: true,
     };
     return dataSourceAndSeederOptions;
@@ -47,6 +47,6 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   },
   synchronize: false,
   dropSchema: false,
-  migrationsRun: true,
+  migrationsRun: false,
   logging: true,
 };

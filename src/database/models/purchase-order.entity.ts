@@ -19,4 +19,7 @@ export class PurchaseOrder extends Base {
     { cascade: true },
   )
   purchaseOrderDetails: PurchaseOrderDetail[];
+
+  // @Column()
+  // trackingNumber: number;
 }

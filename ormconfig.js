@@ -18,7 +18,7 @@ module.exports = {
   seeds: [path.resolve(__dirname, 'src/database/seeders/**/*{.ts,.js}')],
   factories: [path.resolve(__dirname, 'src/database/factories/**/*{.ts,.js}')],
 
-  dropSchema: Boolean(process.env.TYPEORM_DROP_SCHEMA_CONFIG) || false,
-  synchronize: Boolean(process.env.TYPEORM_SYNCHRONIZE) || false,
-  migrationsRun: Boolean(process.env.TYPEORM_MIGRATIONS_RUN) || false,
+  dropSchema: false,
+  synchronize: true,
+  migrationsRun: false,
 };
