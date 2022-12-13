@@ -3,13 +3,12 @@ import { DataSource } from 'typeorm';
 export default new DataSource({
   type: 'mysql',
   /**   RUNNING IN COMMAND LINE  */
-  /*  
-    host: 'localhost',
-    username: 'smbs',
-    database: 'inventory',
-    password: '12345678',
-    port: 3306, 
-  */
+  // host: 'localhost',
+  // username: 'smbs',
+  // database: 'inventory',
+  // password: '12345678',
+  // port: 3306,
+
   /**   RUNNING IN DOCKER COMPOSE  */
   host: process.env.DATABASE_HOST,
   database: process.env.DATABASE_NAME,
@@ -19,6 +18,8 @@ export default new DataSource({
 
   entities: [`${__dirname}/../**/*.entity.{js,ts}`],
   migrations: [`${__dirname}/../database/migrations/*{.ts,.js}`],
+  migrationsTableName: 'migrations',
   synchronize: false,
+  migrationsRun: true,
   logging: true,
 });

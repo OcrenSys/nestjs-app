@@ -22,10 +22,10 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     
     "typeorm:cli": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli",
-    "migration:generate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli migration:generate -d src/config/typeorm.config-migrations.ts -o",
+    "migration:generate": "yarn typeorm:cli migration:generate -d src/config/typeorm.config-migrations.ts -o",
     "migration:create": "yarn typeorm:cli -- migration:create -d src/database/migrations -n",
-    "migration:run": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli migration:run -d src/config/typeorm.config-migrations.ts",
-    "migration:revert": "yarn typeorm:cli -- migration:revert",
+    "migration:run": "yarn typeorm:cli migration:run -d src/config/typeorm.config-migrations.ts",
+    "migration:revert": "yarn typeorm:cli migration:revert -d src/config/typeorm.config-migrations.ts",
 
     "db:create": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js db:create",
     "db:drop": "ts-node ./node_modules/typeorm-extension/dist/cli/index.js db:drop",
