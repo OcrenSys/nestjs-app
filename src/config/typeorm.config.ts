@@ -24,9 +24,9 @@ export const typeOrmConfigAsync: TypeOrmModuleAsyncOptions = {
       extra: {
         charset: 'utf8mb4_unicode_ci',
       },
-      synchronize: true,
+      synchronize: false,
       dropSchema: false,
-      migrationsRun: true,
+      migrationsRun: false,
       logging: true,
     };
     return dataSourceAndSeederOptions;
@@ -47,6 +47,6 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   },
   synchronize: false,
   dropSchema: false,
-  migrationsRun: true,
+  migrationsRun: false,
   logging: true,
 };

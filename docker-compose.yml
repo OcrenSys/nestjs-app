@@ -16,7 +16,7 @@ services:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     command: >
-      sh -c "yarn && yarn seed:run && yarn start:dev"
+      sh -c "yarn && yarn migration:run && yarn seed:run && yarn start:dev"
     ports:
       - '${API_PORT_DEV}:${API_PORT_DEV}'
       - '${API_PORT_DEBUG}:${API_PORT_DEBUG}'
@@ -35,15 +35,17 @@ services:
 
   mysql:
     container_name: '${CONTAINER_NAME}-mysql'
-    image: mysql:8.0.29
+    image: mariadb:10.5.5
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: '${DATABASE_PASSWORD}'
+      MYSQL_ROOT_PASSWORD: '${DATABASE_ROOT_PASSWORD}'
+      MYSQL_USER: '${DATABASE_USERNAME}'
       MYSQL_PASSWORD: '${DATABASE_PASSWORD}'
       MYSQL_DATABASE: '${DATABASE_NAME}'
     volumes:
       - mysqldata:/var/lib/mysql
       - ./mysqlconfig:/etc/mysql/conf.d
+      - ./init/01.sql:/docker-entrypoint-initdb.d/01.sql
     env_file:
       - .env
     command: --default-authentication-plugin=mysql_native_password
