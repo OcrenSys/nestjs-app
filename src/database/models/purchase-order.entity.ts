@@ -20,6 +20,6 @@ export class PurchaseOrder extends Base {
   )
   purchaseOrderDetails: PurchaseOrderDetail[];
 
-  // @Column({ default: 0 })
-  // trackingNumber: number;
+  @Column({ default: 0 })
+  trackingNumber: number;
 }
