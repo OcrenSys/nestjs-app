@@ -1,0 +1,94 @@
+version: "3.8"
+
+services:
+  api:
+    container_name: '${CONTAINER_NAME}-api'
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # Only will build development stage from our dockerfile
+      target: development
+    depends_on:
+      - mysql
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: >
+      sh -c "yarn && yarn migration:run && yarn seed:run && yarn start:dev"
+    ports:
+      - '${API_PORT_DEV}:${API_PORT_DEV}'
+      - '${API_PORT_DEBUG}:${API_PORT_DEBUG}'
+    environment:
+      WAIT_HOSTS: mysql:${DATABASE_PORT}
+    networks:
+      - inventory
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 500M
+        reservations:
+          cpus: '0.25'
+          memory: 200M
+
+  mysql:
+    container_name: '${CONTAINER_NAME}-mysql'
+    image: mariadb:10.5.5
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DATABASE_ROOT_PASSWORD}'
+      MYSQL_USER: '${DATABASE_USERNAME}'
+      MYSQL_PASSWORD: '${DATABASE_PASSWORD}'
+      MYSQL_DATABASE: '${DATABASE_NAME}'
+    volumes:
+      - mysqldata:/var/lib/mysql
+      - ./mysqlconfig:/etc/mysql/conf.d
+      - ./init/01.sql:/docker-entrypoint-initdb.d/01.sql
+    env_file:
+      - .env
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - '${DATABASE_PORT}:${DATABASE_PORT}'
+    networks:
+      - inventory
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 500M
+        reservations:
+          cpus: '0.25'
+          memory: 200M
+
+  phpmyadmin:
+    container_name: '${CONTAINER_NAME}-phpmyadmin'
+    image: phpmyadmin/phpmyadmin
+    env_file:
+      - .env
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: '${DATABASE_PASSWORD}'
+    ports:
+      - '${PHP_MYADMIN_PORT}:${PHP_MYADMIN_PORT}'
+    depends_on:
+      - mysql
+    networks:
+      - inventory
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 500M
+        reservations:
+          cpus: '0.25'
+          memory: 200M
+
+volumes:
+  mysqldata: {}
+
+networks:
+  inventory:
